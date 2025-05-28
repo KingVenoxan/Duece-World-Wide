@@ -1,51 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>I Love You Twinkle <3</title>
-
-  <!-- Load Baloo 2 font from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet" />
-
   <style>
+    :root {
+      --bg-color: #714061;
+      --text-color: #8BC34A;
+      --gold: #FFD700;
+      --box-bg: #522e48;
+      --font: 'Baloo 2', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: #714061;
-      color: #8BC34A;
-      font-family: 'Baloo 2', cursive;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font);
       text-align: center;
-      font-size: 24px;
-      padding-top: 80px;  /* Added to move everything down */
+      padding: 80px 20px 40px;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    .gold-text-container {
-      margin-top: 300px;
-      border: 4px solid #FFD700;
-      padding: 20px 40px;
+
+    .heart-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+      font-size: 28px;
+      user-select: none;
+    }
+
+    .heart-rain span {
+      position: absolute;
+      top: -2em;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      will-change: transform;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .top-text-container {
+      border: 4px solid var(--text-color);
+      background-color: var(--box-bg);
       border-radius: 12px;
-      display: block;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 10px 20px;
+      margin: 0 auto 20px;
+      display: inline-block;
+      z-index: 10;
+      position: relative;
     }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.1;
+    }
+
+    p.subtitle {
+      font-size: 36px;
+      margin-top: 0.2em;
+      color: var(--text-color);
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 700px;
+      margin: 20px auto;
+      display: block;
+      border: 4px solid var(--gold);
+      border-radius: 12px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .twinkle-roses {
+      font-size: 36px;
+      letter-spacing: 10px;
+      margin: 60px 0 60px;
+      color: var(--text-color);
+      border: 4px solid var(--gold);
+      background-color: var(--box-bg);
+      border-radius: 12px;
+      padding: 12px 24px;
+      display: inline-block;
+      position: relative;
+      z-index: 10;
+    }
+
+    .gold-text-container {
+      border: 4px solid var(--gold);
+      background-color: var(--box-bg);
+      border-radius: 12px;
+      padding: 20px 40px;
+      margin: 0 auto 30px;
+      display: inline-block;
+      position: relative;
+      z-index: 10;
+    }
+
     .gold-text {
       font-size: 36px;
-      color: #FFD700;
-      margin: 0;
+      color: var(--gold);
     }
+
     .hearts {
       font-size: 40px;
       margin-top: 10px;
-      margin-bottom: 0;
+    }
+
+    /* Left and Right Vertical Flower Borders */
+    .emoji-border {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 34px;
+      background-color: var(--text-color);
+      border-left: 2px solid black;
+      border-right: 2px solid black;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .left-col {
+      left: 0;
+    }
+
+    .right-col {
+      right: 0;
+    }
+
+    .emoji-border span {
+      animation: wiggle 2.5s ease-in-out infinite;
+      transform-origin: center bottom;
+      user-select: none;
+      line-height: 1;
+      font-size: 34px; /* Increased size */
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
     }
   </style>
 </head>
 <body>
-  <h1>"Hhelppp! I iz stuckz in dis computur"</h1>
-  <p style="font-size: 36px;">"Sendz Twinkle naooo!"</p>
-  <img src="Duece Photo Op.jpg" alt="Deuce Photo Op" width="800" style="margin-top: 20px;">
+
+  <!-- Heart rain behind content -->
+  <div class="heart-rain" aria-hidden="true"></div>
+
+  <!-- Left Vertical Flower Border -->
+  <div class="emoji-border left-col" aria-hidden="true">
+    <span>🌻</span><span>🌼</span><span>🌸</span><span>💐</span><span>🌺</span>
+    <span>🌻</span><span>🌼</span><span>🌸</span><span>💐</span><span>🌺</span>
+  </div>
+
+  <!-- Right Vertical Flower Border -->
+  <div class="emoji-border right-col" aria-hidden="true">
+    <span>🌺</span><span>💐</span><span>🌸</span><span>🌼</span><span>🌻</span>
+    <span>🌺</span><span>💐</span><span>🌸</span><span>🌼</span><span>🌻</span>
+  </div>
+
+  <!-- Main Content -->
+  <div class="top-text-container">
+    <h1>"Hhelppp! I iz stuckz in dis computur"</h1>
+    <p class="subtitle">"Sendz Twinkle naooo!"</p>
+  </div>
+
+  <img src="Duece Photo Op.jpg" alt="Deuce Photo Op" />
+
+  <div class="twinkle-roses">🌹T🌹W🌹I🌹N🌹K🌹L🌹E🌹</div>
 
   <div class="gold-text-container">
     <p class="gold-text">"I Love You Baby – Pearson"</p>
     <p class="hearts">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</p>
   </div>
+
+  <script>
+    const heartRain = document.querySelector('.heart-rain');
+    const heartsCount = 40;
+
+    for (let i = 0; i < heartsCount; i++) {
+      const heart = document.createElement('span');
+      heart.textContent = i < heartsCount / 2 ? '🤍' : '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (20 + Math.random() * 18) + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 7) + 's';
+      heart.style.animationDelay = (Math.random() * 10) + 's';
+      heart.style.opacity = (0.3 + Math.random() * 0.7);
+      heart.style.position = 'absolute';
+
+      heartRain.appendChild(heart);
+    }
+  </script>
 </body>
 </html>
-
