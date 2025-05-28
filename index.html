@@ -92,7 +92,7 @@
     img {
       max-width: 90%;
       max-height: 700px;
-      margin: 20px auto;
+      margin: 60px auto 20px; /* increased top margin for space */
       display: block;
       border: 4px solid var(--gold);
       border-radius: 12px;
@@ -215,7 +215,7 @@
       const heart = document.createElement('span');
       heart.textContent = i < heartsCount / 2 ? '🤍' : '❤️';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (20 + Math.random() * 18) + 'px';
+      heart.style.fontSize = ((20 + Math.random() * 18) * 1.25) + 'px';  // 25% bigger
       heart.style.animationDuration = (5 + Math.random() * 7) + 's';
       heart.style.animationDelay = (Math.random() * 10) + 's';
       heart.style.opacity = (0.3 + Math.random() * 0.7);
